@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Women's Day, Souptika!</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffe4e1;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            overflow: hidden;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            display: none;
+        }
+        .mail-icon {
+            font-size: 50px;
+            cursor: pointer;
+        }
+        .button {
+            background: #ff69b4;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="mail" class="mail-icon">📩</div>
+    <div id="card" class="card">
+        <h2>Happy Women's Day, Souptika! 🎉</h2>
+        <p>Souptika, the Midnight Warrior – your battles were never struggles, they were wars, and you have fought them bravely. Your strength, resilience, and courage inspire all. May this day be as powerful as you are!</p>
+        <p>- With admiration, Soham</p>
+        <button class="button" onclick="celebrate()">Celebrate Souptika</button>
+    </div>
+
+    <script>
+        document.getElementById("mail").addEventListener("click", function() {
+            document.getElementById("mail").style.display = "none";
+            document.getElementById("card").style.display = "block";
+            confetti();
+        });
+
+        function celebrate() {
+            alert("You are truly special! ❤️");
+            confetti();
+        }
+
+        function confetti() {
+            const end = Date.now() + 2 * 1000;
+            (function frame() {
+                const timeLeft = end - Date.now();
+                if (timeLeft <= 0) return;
+                const confetti = document.createElement("div");
+                confetti.innerHTML = "🎊";
+                confetti.style.position = "absolute";
+                confetti.style.left = Math.random() * window.innerWidth + "px";
+                confetti.style.top = "0px";
+                confetti.style.fontSize = "24px";
+                document.body.appendChild(confetti);
+                let move = setInterval(() => {
+                    if (parseInt(confetti.style.top) > window.innerHeight) {
+                        clearInterval(move);
+                        confetti.remove();
+                    }
+                    confetti.style.top = parseInt(confetti.style.top) + 5 + "px";
+                }, 50);
+                requestAnimationFrame(frame);
+            })();
+        }
+    </script>
+</body>
+</html>
